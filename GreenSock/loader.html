@@ -11,19 +11,7 @@
 
 <body>
 
-    <div class="muitoPapo">
-        <h1 class="title">H</h1>
-        <h1 class="title">E</h1>
-        <h1 class="title">L</h1>
-        <h1 class="title">L</h1>
-        <h1 class="title">O</h1>
-        <h1 class="title">&nbsp;</h1>
-        <h1 class="title">W</h1>
-        <h1 class="title">O</h1>
-        <h1 class="title">R</h1>
-        <h1 class="title">L</h1>
-        <h1 class="title">D</h1>
-    </div>
+    <div class="loader"></div>
 
     <!-- <div class="block blockPositive"></div>
     <div class="block blockNegative"></div>
@@ -33,8 +21,6 @@
     <div class="block blockNegative"></div>
     <div class="block blockPositive"></div>
     <div class="block blockNegative"></div> -->
-
-
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
@@ -48,11 +34,19 @@
 
         const tl = new TimelineMax();
 
-        tl.from(
-            document.querySelectorAll('.title'),
+        tl.fromTo(
+            document.querySelectorAll('.loader'),
             1, {
-                opacity: 0,
-                scale: .1
+                scale: .5,
+                borderRadius: "+=100%",
+                repeatDelay: 0
+            },{
+                scale: 1,
+                borderRadius: "-=100%",
+                rotation:1440,
+                repeat: -1,
+                yoyo: true,
+                repeatDelay: 1
             }
         );
     </script>
