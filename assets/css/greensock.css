@@ -1,0 +1,18 @@
+body{width: 100vw; height: 100vh; background-color: tomato; display: flex; justify-content: center; align-items: center; flex-direction: column; overflow: hidden;}
+.block {background-color: bisque; width: 100px; height: 100px; display: flex; }
+
+.blockAbout {
+    background-color: black;
+}
+
+.muitoPapo {
+    display: flex;
+    flex-direction: row;
+}
+.muitoPapo h1 {
+    margin-right: 25px;
+}
+
+h1 {
+    font-size: 50px;
+}

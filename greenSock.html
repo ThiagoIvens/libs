@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenSock Learning</title>
+    <link rel="stylesheet" href="./assets/css/greensock.css">
+</head>
+
+<body>
+
+    <div class="muitoPapo">
+        <h1 class="title">H</h1>
+        <h1 class="title">E</h1>
+        <h1 class="title">L</h1>
+        <h1 class="title">L</h1>
+        <h1 class="title">O</h1>
+        <h1 class="title">&nbsp;</h1>
+        <h1 class="title">W</h1>
+        <h1 class="title">O</h1>
+        <h1 class="title">R</h1>
+        <h1 class="title">L</h1>
+        <h1 class="title">D</h1>
+    </div>
+
+    <!-- <div class="block blockPositive"></div>
+    <div class="block blockNegative"></div>
+    <div class="block blockPositive"></div>
+    <div class="block blockNegative"></div>
+    <div class="block blockPositive"></div>
+    <div class="block blockNegative"></div>
+    <div class="block blockPositive"></div>
+    <div class="block blockNegative"></div> -->
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/EasePack.min.js"></script>
+
+    <script>
+        // tl.to( target, { to } );
+        // tl.from( target, { from } );
+        // tl.fromTo( target, { from }, { to } );
+        // tl.staggerFromTo( target, time, { from }, { to }, staggerTime );
+
+        const tl = new TimelineMax();
+
+        tl.from(
+            document.querySelectorAll('.title'),
+            1, {
+                opacity: 0,
+                scale: .1
+            }
+        );
+    </script>
+</body>
+</html>
