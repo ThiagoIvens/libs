@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="./assets/css/greensock.css">
+    <link rel="stylesheet" href="./assets/css/slider.css">
+
+</head>
+
+<body>
+
+    <div class="slider">
+        <div class="slider__item">
+            <div class="slider__text">
+                <p>Titulo</p>
+                <p>Subtitulo</p>
+            </div>
+        </div>
+        <div class="slider__item">
+            <div class="slider__text">
+                <p>Titulo 2</p>
+                <p>Subtitulo 2</p>
+            </div>
+        </div>
+        <div class="slider__item">
+            <div class="slider__text">
+                <p>Titulo 3</p>
+                <p>Subtitulo 3</p>
+            </div>
+        </div>
+
+
+        <div class="slider__arrows">
+            <div class="slider__arrows__left">&#10094</div>
+            <div class="slider__arrows__right">&#10095</div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/EasePack.min.js"></script>
+
+    <script>
+        // Selectors
+        const sliderItems = document.querySelectorAll('.slider__item');
+        const sliderArrowLeft = document.querySelector('.slider__arrows__left');
+        const sliderArrowRight = document.querySelector('.slider__arrows__right');
+
+        TweenMax.set(sliderItems, {left: '-100vw'});
+
+        const Slider = {
+            currentItem: 0,
+            init: () => {
+                Slider.in(Slider.currentItem);
+            },
+            in: (index) => {
+
+                const item = sliderItems[index];
+                const texts = item.querySelectorAll('p');
+                TweenMax.set(item, { scale: .9 });
+                TweenMax.set(item, { left: '-100vw' });
+
+                const tl = new TimelineMax();
+                tl
+                    .to(item, .5, { left: 0, delay: 1 })
+                    .to(item, .5, { scale: 1 })
+                    .staggerFrom(texts, .5, { y: 300, autoAlpha: 0, ease: Back.easeOut }, 0.5);
+            },
+            out: (index, nextIndex) => {
+                const item = sliderItems[index];
+                const texts = item.querySelectorAll('p');
+                const tl = new TimelineMax();
+                tl
+                    .staggerTo(texts, .5, { y: 300, autoAlpha: 0, ease: Back.easeIn }, '-=0.5')
+                    .to(item, .5, { scale: .9 })
+                    .to(item, .5, { left: '100vw' })
+                    .call(Slider.in, [nextIndex], this, '-=1.5')
+                    .set(texts, { clearProps: 'all' });
+
+            },
+            next: () => { 
+                const next = Slider.currentItem !== sliderItems.length - 1 ? Slider.currentItem + 1 : 0;
+                Slider.out(Slider.currentItem, next);
+                Slider.currentItem = next;
+                
+            },
+            prev: () => { 
+                const prev = Slider.currentItem > 0 ? Slider.currentItem - 1 : sliderItems.length - 1;
+                Slider.out(Slider.currentItem, prev);
+                Slider.currentItem = prev;
+            }
+        }
+
+        sliderArrowRight.addEventListener('click', Slider.next);
+        sliderArrowLeft.addEventListener('click', Slider.prev);
+        
+        Slider.init();
+
+    </script>
+</body>
+
+</html>

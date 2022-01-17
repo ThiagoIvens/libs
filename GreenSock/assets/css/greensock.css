@@ -1,3 +1,4 @@
+* {margin: 0; padding: 0; overflow: hidden; } 
 body{width: 100vw; height: 100vh; background-color: tomato; display: flex; justify-content: center; align-items: center; flex-direction: column; overflow: hidden;}
 .block {background-color: bisque; width: 100px; height: 100px; display: flex; }
 
