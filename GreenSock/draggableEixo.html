@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Basics</title>
+    <link rel="stylesheet" href="./assets/css/draggable.css">
+</head>
+
+<body>
+
+    
+    <div class="div">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Draggable.min.js"></script>
+
+    <script>
+
+        const item = document.querySelectorAll('.div button');
+
+        Draggable.create(item, {
+            // Passar 'type' e o tipo do eixo que ele move (ex: x or y or rotation)
+            type: 'x'
+        });
+    </script>
+</body>
+</html>
