@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Basics</title>
+    <link rel="stylesheet" href="./assets/css/draggable.css">
+</head>
+
+<body>
+
+    <div class="delimited">
+        <div class="div">
+            <button></button>
+            <button></button>
+            <button></button>
+            <button></button>
+            <button></button>
+            <button></button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Draggable.min.js"></script>
+
+    <script>
+
+        const item = document.querySelectorAll('.div button');
+        const area = document.querySelector('.delimited');
+
+        Draggable.create(item, {
+            onDragStart: () => {
+                console.log('O drag iniciou')
+            },
+            onDrag: () => {
+                console.log('O drag esta acontecendo')
+            },
+            onDragEnd: () => {
+                console.log('O drag terminou')
+            }
+        });
+    </script>
+</body>
+</html>
