@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Basics</title>
+    <link rel="stylesheet" href="./assets/css/draggable.css">
+</head>
+
+<body>
+
+
+    <h1>Mova para selecionar o preço:</h1>
+    <div class="drag-container">
+        <div class="drag-interaction">
+            <div class="drag"></div>
+        </div>
+    </div>
+    <p class="price-text">O preço é <span class="price"></span></p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Draggable.min.js"></script>
+
+    <script>
+        // selectors
+        const drag = document.querySelector('.drag-interaction');
+        const price = document.querySelector('.price');
+
+        // important variables
+        const minVal = 0;
+        const maxVal = 50000;
+        const minRotation = 0;
+        const maxRotation = 180;
+
+        function onDrag() {
+            price.innerText = (Info.rotation * (maxVal / maxRotation)).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        }
+
+        Draggable.create(drag, {
+            type: 'rotation',
+            bounds: {
+                minRotation: minRotation,
+                maxRotation: maxRotation
+            },
+            onDrag: onDrag
+        });
+
+        // pega as informações do objeto selecionado
+        const Info = Draggable.get(drag);
+
+        // para carregar já com o valor definido
+        onDrag();
+    </script>
+</body>
+
+</html>
